@@ -1,0 +1,155 @@
+[gd_scene load_steps=14 format=3 uid="uid://bb40mjlx2x2kn"]
+
+[ext_resource type="Script" path="res://Scripts/Receptor.gd" id="1_0mc7g"]
+[ext_resource type="Script" path="res://Scripts/GeradorDeNotas.gd" id="1_um44g"]
+[ext_resource type="Texture2D" uid="uid://dhvu5l65kqv41" path="res://botao.png" id="2_hbhws"]
+[ext_resource type="Script" path="res://Scripts/InterfaceUI.gd" id="3_h5nn0"]
+[ext_resource type="PackedScene" uid="uid://buj2pwda28h2n" path="res://Cenas/game_over_ui.tscn" id="4_nhgbf"]
+[ext_resource type="VideoStream" path="res://Fundo_Animado_para_Jogo_Infantil.ogv" id="6_2obsa"]
+[ext_resource type="Script" path="res://Scripts/VideoLoop.gd" id="7_0ntu3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lqykj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w3jkp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qguim"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3vhey"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uqmy2"]
+bg_color = Color(0.2, 0.2, 0.2, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ps0c"]
+bg_color = Color(0.25098, 0.752941, 0.25098, 1)
+
+[node name="JogoPrincipal" type="Node2D"]
+
+[node name="Estrada" type="Sprite2D" parent="."]
+
+[node name="Receptores" type="Node2D" parent="."]
+
+[node name="ReceptorD" type="Area2D" parent="Receptores"]
+position = Vector2(426, 550)
+monitorable = false
+script = ExtResource("1_0mc7g")
+acao_de_input = &"hit_lane_1"
+
+[node name="Visual" type="Sprite2D" parent="Receptores/ReceptorD"]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_hbhws")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Receptores/ReceptorD"]
+shape = SubResource("RectangleShape2D_lqykj")
+
+[node name="ReceptorF" type="Area2D" parent="Receptores"]
+position = Vector2(526, 550)
+monitorable = false
+script = ExtResource("1_0mc7g")
+acao_de_input = &"hit_lane_2"
+
+[node name="Visual" type="Sprite2D" parent="Receptores/ReceptorF"]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_hbhws")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Receptores/ReceptorF"]
+shape = SubResource("RectangleShape2D_w3jkp")
+
+[node name="ReceptorJ" type="Area2D" parent="Receptores"]
+position = Vector2(626, 550)
+monitorable = false
+script = ExtResource("1_0mc7g")
+acao_de_input = &"hit_lane_3"
+
+[node name="Visual" type="Sprite2D" parent="Receptores/ReceptorJ"]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_hbhws")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Receptores/ReceptorJ"]
+shape = SubResource("RectangleShape2D_qguim")
+
+[node name="ReceptorK" type="Area2D" parent="Receptores"]
+position = Vector2(726, 550)
+monitorable = false
+script = ExtResource("1_0mc7g")
+acao_de_input = &"hit_lane_4"
+
+[node name="Visual" type="Sprite2D" parent="Receptores/ReceptorK"]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_hbhws")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Receptores/ReceptorK"]
+shape = SubResource("RectangleShape2D_3vhey")
+
+[node name="GeradorDeNotas" type="Node2D" parent="."]
+position = Vector2(426, -43)
+script = ExtResource("1_um44g")
+
+[node name="Timer" type="Timer" parent="GeradorDeNotas"]
+
+[node name="Interface" type="CanvasLayer" parent="."]
+script = ExtResource("3_h5nn0")
+
+[node name="Pontuacao" type="Label" parent="Interface"]
+offset_left = 880.0
+offset_top = 40.0
+offset_right = 952.0
+offset_bottom = 63.0
+text = "Pontos: 0"
+horizontal_alignment = 2
+
+[node name="Combo" type="Label" parent="Interface"]
+offset_left = 880.0
+offset_top = 80.0
+offset_right = 920.0
+offset_bottom = 103.0
+text = "x1"
+
+[node name="BarraDeEnergia" type="ProgressBar" parent="Interface"]
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 340.0
+offset_bottom = 70.0
+theme_override_styles/background = SubResource("StyleBoxFlat_uqmy2")
+theme_override_styles/fill = SubResource("StyleBoxFlat_6ps0c")
+value = 100.0
+show_percentage = false
+
+[node name="LabelTabuada" type="Label" parent="Interface"]
+custom_minimum_size = Vector2(300, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -284.0
+offset_right = 300.0
+offset_bottom = -261.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 24
+text = "tabuada do 2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameOverUI" parent="." instance=ExtResource("4_nhgbf")]
+visible = false
+
+[node name="VideoFundo" type="VideoStreamPlayer" parent="."]
+offset_right = 1280.0
+offset_bottom = 720.0
+stream = ExtResource("6_2obsa")
+autoplay = true
+loop = true
+script = ExtResource("7_0ntu3")
+
+[connection signal="area_entered" from="Receptores/ReceptorD" to="Receptores/ReceptorD" method="_on_area_entered"]
+[connection signal="area_exited" from="Receptores/ReceptorD" to="Receptores/ReceptorD" method="_on_area_exited"]
+[connection signal="area_entered" from="Receptores/ReceptorF" to="Receptores/ReceptorF" method="_on_area_entered"]
+[connection signal="area_exited" from="Receptores/ReceptorF" to="Receptores/ReceptorF" method="_on_area_exited"]
+[connection signal="area_entered" from="Receptores/ReceptorJ" to="Receptores/ReceptorJ" method="_on_area_entered"]
+[connection signal="area_exited" from="Receptores/ReceptorJ" to="Receptores/ReceptorJ" method="_on_area_exited"]
+[connection signal="area_entered" from="Receptores/ReceptorK" to="Receptores/ReceptorK" method="_on_area_entered"]
+[connection signal="area_exited" from="Receptores/ReceptorK" to="Receptores/ReceptorK" method="_on_area_exited"]
+[connection signal="timeout" from="GeradorDeNotas/Timer" to="GeradorDeNotas" method="_on_timer_timeout"]
+[connection signal="finished" from="VideoFundo" to="VideoFundo" method="_on_finished"]

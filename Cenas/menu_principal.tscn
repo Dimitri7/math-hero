@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfkxga05wpv5h"]
+
+[ext_resource type="Script" path="res://Scripts/menu_principal.gd" id="1_uppot"]
+
+[node name="MenuPrincipal" type="Node2D"]
+script = ExtResource("1_uppot")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 529.0
+offset_top = 32.0
+offset_right = 612.0
+offset_bottom = 55.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 47
+text = "Math Hero"
+horizontal_alignment = 1
+
+[node name="BotaoJogar" type="Button" parent="."]
+custom_minimum_size = Vector2(200, 70)
+offset_left = 223.0
+offset_top = 530.0
+offset_right = 271.0
+offset_bottom = 561.0
+theme_override_font_sizes/font_size = 27
+text = "Jogar"
+
+[node name="BotaoSair" type="Button" parent="."]
+custom_minimum_size = Vector2(200, 70)
+offset_left = 806.0
+offset_top = 530.0
+offset_right = 1006.0
+offset_bottom = 600.0
+theme_override_font_sizes/font_size = 27
+text = "Sair"
+
+[connection signal="pressed" from="BotaoJogar" to="." method="_on_botao_jogar_pressed"]
+[connection signal="pressed" from="BotaoSair" to="." method="_on_botao_sair_pressed"]

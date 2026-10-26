@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://7jt83kectpw4"]
+
+[ext_resource type="Script" path="res://Scripts/AudioManager.gd" id="1_g1it8"]
+[ext_resource type="AudioStream" path="res://Audio/musica.ogg" id="2_ot4en"]
+[ext_resource type="AudioStream" uid="uid://b0ul4klq2vncs" path="res://Audio/acerto.mp3" id="3_u60ps"]
+[ext_resource type="AudioStream" uid="uid://bh35au6yvgwad" path="res://Audio/erro.mp3" id="4_mx15a"]
+
+[node name="AudioManager" type="Node"]
+script = ExtResource("1_g1it8")
+
+[node name="MusicaFundo" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ot4en")
+
+[node name="SFX_Acerto" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_u60ps")
+
+[node name="SFX_Erro" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_mx15a")

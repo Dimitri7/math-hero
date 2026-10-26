@@ -1,0 +1,81 @@
+[gd_scene load_steps=11 format=3 uid="uid://c0kxdnsjj02tj"]
+
+[ext_resource type="Script" path="res://Scripts/nota.gd" id="1_wcstx"]
+[ext_resource type="Texture2D" uid="uid://bofxf4xw6xisx" path="res://ok.png" id="2_1bb10"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wkqi7"]
+radius = 32.5
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0jqmu"]
+atlas = ExtResource("2_1bb10")
+region = Rect2(0, 0, 426, 426)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxaq3"]
+atlas = ExtResource("2_1bb10")
+region = Rect2(426, 0, 426, 426)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7twv"]
+atlas = ExtResource("2_1bb10")
+region = Rect2(852, 0, 426, 426)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xy1d5"]
+atlas = ExtResource("2_1bb10")
+region = Rect2(0, 426, 426, 426)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cwdsc"]
+atlas = ExtResource("2_1bb10")
+region = Rect2(426, 426, 426, 426)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xivp5"]
+atlas = ExtResource("2_1bb10")
+region = Rect2(852, 426, 426, 426)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2four"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0jqmu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gxaq3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7twv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xy1d5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cwdsc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xivp5")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 8.0
+}]
+
+[node name="Nota" type="Area2D"]
+monitoring = false
+script = ExtResource("1_wcstx")
+
+[node name="Numero" type="Label" parent="."]
+offset_left = -9.0
+offset_top = -9.0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "14"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -0.5)
+shape = SubResource("CircleShape2D_wkqi7")
+
+[node name="Visual" type="AnimatedSprite2D" parent="."]
+position = Vector2(3, -7)
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_2four")
+animation = &"new_animation"
+autoplay = "new_animation"
+frame_progress = 0.483595
