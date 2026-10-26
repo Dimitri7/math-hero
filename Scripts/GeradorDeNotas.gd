@@ -1,7 +1,7 @@
 extends Node2D
 
 # 1. Carregamos o "molde" da nossa cena Nota.
-const CENA_DA_NOTA = preload("res://Cenas/Nota.tscn")
+const CENA_DA_NOTA = preload("res://Cenas/nota.tscn")
 
 # 2. Lista com as posições X das 4 pistas.
 var posicoes_x_das_pistas = [426, 526, 626, 726]
